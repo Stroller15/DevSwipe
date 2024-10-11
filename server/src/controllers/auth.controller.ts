@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { User } from "../models/user.model.js";
 
-export const createUser = async (req: Request, res: Response): Promise<Response> => {
+export const createUser = async (req: Request, res: Response): Promise<any> => {
   const { firstName, lastName, email, password, age, gender } = req.body;
 
   try {
@@ -31,8 +31,10 @@ export const createUser = async (req: Request, res: Response): Promise<Response>
   }
 };
 
-
-export const findUser = async (req: Request, res: Response): Promise<Response> => {
+export const findUser = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
   try {
     const user = await User.find({
       email: req.body.email,
