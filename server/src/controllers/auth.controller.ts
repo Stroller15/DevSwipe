@@ -31,28 +31,4 @@ export const createUser = async (req: Request, res: Response): Promise<any> => {
   }
 };
 
-export const findUser = async (
-  req: Request,
-  res: Response
-): Promise<Response> => {
-  try {
-    const user = await User.find({
-      email: req.body.email,
-    });
 
-    if (user.length === 0) {
-      res.status(404).json({
-        msg: "user not found",
-      });
-    }
-
-    res.status(200).json({
-      msg: "user found successfully",
-      user,
-    });
-  } catch (error) {
-    return res
-      .status(500)
-      .json({ message: "Server error", error: error.message });
-  }
-};
